@@ -1,3 +1,4 @@
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -9,6 +10,8 @@ public class ZipCodeTest {
   public void enterValidZipCode() {
     System.setProperty("webdriver.chrome.driver", "C:\\Users\\Anton Usik\\Downloads\\chromedriver_win32\\chromedriver.exe");
     ChromeDriver driver = new ChromeDriver();
+    driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     driver.get("https://www.sharelane.com/cgi-bin/register.py");
     driver.findElementByName("zip_code").click();
     driver.findElement(By.name("zip_code")).clear();
